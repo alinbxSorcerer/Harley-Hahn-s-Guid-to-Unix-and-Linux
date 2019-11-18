@@ -1,0 +1,584 @@
+#+TITLE: guide-to-unix-and-linux
+* Harley Hahn's Guid to Unix and Linux
+:LOGBOOK:
+CLOCK: [2019-03-29 Fri 10:24]j
+:END:
+** 总结
+*** 思想层面
+   1. file an
+d process, /proc里面有pid的interface.
+   2. Kernel的三个方面， hardware, software environent and interface to human
+   3. Terminal and host, human hardward communicate with computer hardware.zz
+   4. Withon the system, you do not exist.
+*** 应用层面
+    1. pushd, pop, dirs -v的应用ps
+** Outline
+ |----+------------------------------------------------|
+ | No | Chapter                                        |
+ |----+------------------------------------------------|
+ |  1 | Introduction to Unix                           |
+ |----+------------------------------------------------|
+ |  2 | What is Unix? What is Liux?                    |
+ |----+------------------------------------------------|
+ |  3 | The Unix Connectionc                           |
+ |----+------------------------------------------------|
+ |  4 | Starting to Use Unix                           |
+ |----+------------------------------------------------|
+ |  5 | GUIs: Graphic User Interfaces                  |
+ |----+------------------------------------------------|
+ |  6 | The Unix Work Environment                      |
+ |----+------------------------------------------------|
+ |  7 | Using The Keyboard With Unix                   |
+ |----+------------------------------------------------|
+ |  8 | Programs To Use Right Away                     |
+ |----+------------------------------------------------|
+ |  9 | Documentation: The Unix Manual and Info        |
+ |----+------------------------------------------------|
+ | 10 | Command                                        |
+ |----+------------------------------------------------|
+ | 11 | The Shell                                      |
+ |----+------------------------------------------------|
+ | 12 | Using The Shell: Variables and Options         |
+ |----+------------------------------------------------|
+ | 13 | Using the Shell: Commands and Customization    |
+ |----+------------------------------------------------|
+ | 14 | Using the Shell: Initialization FILES          |
+ |----+------------------------------------------------|
+ | 15 | Standard I/O, Redirection, and Pipes           |
+ |----+------------------------------------------------|
+ | 16 | 16.Filters: Introduction and Basic Operations  |
+ |----+------------------------------------------------|
+ | 17 | 17.Filters: Comparing and Extracting           |
+ |----+------------------------------------------------|
+ | 18 | 18. Filters: Counting and Formatting           |
+ |----+------------------------------------------------|
+ | 19 | 19.Filters: Selecting, Sorting, Combining      |
+ |----+------------------------------------------------|
+ | 20 | Regular Expression                             |
+ |----+------------------------------------------------|
+ | 21 | Displaying Files                               |
+ |----+------------------------------------------------|
+ | 22 | The vi Text Editor                             |
+ |----+------------------------------------------------|
+ | 23 | The Unix Filesystem                            |
+ |----+------------------------------------------------|
+ | 24 | Working with Directories                       |
+ |----+------------------------------------------------|
+ | 25 | Working with Files                             |
+ |----+------------------------------------------------|
+ | 26 | Processes and Job Control                      |
+ |----+------------------------------------------------|
+ |  A | Summary of Unix Commands Covered in the Book   |
+ |----+------------------------------------------------|
+ |  B | Summary of Unix Commands by Categories         |
+ |----+------------------------------------------------|
+ |  C | Summary of Vi Commands                         |
+ |----+------------------------------------------------|
+ |  D | The ASCII Code                                 |
+ |----+------------------------------------------------|
+ |  E | What To Do If You Forget The Root Password     |
+ |----+------------------------------------------------|
+ |  F | Time Zone and 24-Hour Time                     |
+ |----+------------------------------------------------|
+ |  G | Shell Options and Shell Varialbes              |
+ |----+------------------------------------------------|
+ |    | 总结,以后章节的序号可以写到章节的里面去.       |
+ |----+------------------------------------------------|
+ |    |                                                |
+
+** Excerpt:
+*** Personal Notes:
+     1. An extension of your mind
+     2. You are working with people who designed Unix (behind the computer)
+     3. Yor are forging a mental relatioship with some of the smartest, most accomplished programmer.
+** The Concepts:
+   Within your Unix system, you do not exist.
+   You log in as a particular userid, and you run programs to do your bidding.
+   As a person who lives in the outside world, your role is limited to furnishing input and reading output.
+
+** 01.Introduction
+   - You are becoming a member of the global Unix community, the
+     largest collection of smart people in the history of the world.
+   - Second, using Unix will change how you think, and for the better.
+   - Unix people like to read. In a world in which most people
+     have trouble mustering up an attention span longer than ﬁve
+     minutes, Unix people will actually read the manual when they have
+     a problem.
+** 02.What is Linux? What is Unix?
+*** Summary
+    It's a Operating System
+    - Kernel + Utilities
+
+*** 1.What is Operating System
+    三个方面, 1
+    ) Hardware 2) Software (furnish an environment) 3) User
+    interface.
+    program bring life. 这点说得震撼到了我的心底.
+    The important idea I want you to appreciate is that computer
+    systems are complex entities, created by a melding of 1) hardware,
+    2) software, and 3) users. Since you are the user, you are affected by
+    1)the hardware and 2) the software that you choose to use.
+
+    1) Computers (machines) run programs in order to perform tasks for people
+    and provide services to other programs.
+    2) Programs bring life to what would otherwise be inert machines.
+    3) People use computers for a large variety of purposes, including writing more programs to run on
+    computers.
+
+    1. To make efficient use of the hardware.
+    2. To furnish an environment for software, offering resources to the various programs as they
+   run.
+    3. To provide an interface for users to interact with the software.
+    4. To offer a variety of basic tools(useful program) for users.
+*** 2.What is Kernel?
+    - In this way, the kernel is constantly available to provide essential services as they are needed.
+*** 3.Unix = Kernel + Utilities
+*** 4."Unix" Used to be a specific name
+*** 5."Unix" is now a generic name
+*** 6.The Free Software Foundation
+    Computer users should be free to modify programs to ﬁt their needs, and free to share software, because helping other people is the basis of society.” Stallman believed that programmers, by their nature, like to share their work and, when they do, everyone beneﬁts.
+*** 7.Excerpts from the GNU Manifesto
+    “I consider that the golden rule requires that if I like a program I must share it with other people who like it. Software sellers want to divide the users and conquer them, making each user agree not to share with others. I refuse to break solidarity with other users in this way. I cannot in good conscience sign a nondisclosure agreement or a software license agreement. For years I worked within the [MIT] Artiﬁcial Intelligence Lab to resist such tendencies and other inhospitalities, but eventually they had gone too far: I could not remain in an institution where such things are done for me against my will.
+
+“So that I can continue to use computers without dishonor, I have decided to put together a sufﬁcient body of free software so that I will be able to get along without any software that is not free. I have resigned from the AI lab to deny MIT any legal excuse to prevent me from giving GNU away...
+
+“Many programmers are unhappy about the commercialization of system software. It may enable them to make more money, but it requires them to feel in conﬂict with other programmers in general rather than feel as comrades. The fundamental act of friendship among programmers is the sharing of programs; marketing arrangements now typically used essentially forbid programmers to treat others as friends. The purchaser of software must choose between friendship and obeying the law. Naturally, many decide that friendship is more important. But those who believe in law often do not feel at ease with either choice. They become cynical and think that programming is just a way of making money...
+
+“Copying all or parts of a program is as natural to a programmer as breathing, and as productive. It ought to be as free...
+
+“In the long run, making programs free is a step toward the post-scarcity world, where nobody will have to work very hard just to make a living. People will be free to devote themselves to activities that are fun, such as programming, after spending the necessary ten hours a week on required tasks such as legislation, family counseling, robot repair and asteroid prospecting. There will be no need to be able to make a living from programming...”
+*** 8.The GPL and Open Source Software
+*** 9.Unix in the 1970: From Bell labs to Berkeyley
+*** 10.Unix in the 1980s: BSD and System V
+*** 11.Unix in 1991
+*** 12...Mr.Right,Linus Torvalds
+*** 13.Liux Distributions
+*** 14.BSD Distributions
+*** 15.What type of Unix should you use?
+*** 16.How do you get Linux or FreeBSD
+
+** 03.The Unix Connection
+*** Summary
+    - Interface, Terminal + Host
+    - Local Area Network
+    - Client/Server
+    - Text is all you need.
+*** 1. Humans, Machines and Aliens
+    - Interface and everything else;
+    - Computer = Terminal + Host
+    - Terminal = Input facility + output facility
+
+      | Facility       | Interface                 |         |            |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | Input          | keyboard                  | mouse   | microphone |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | output         | monitor                   | speaker |            |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | Human Terminal |                           |         |            |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | Sense organs   | ear                       | eye     | nose       | mouse                        | skin |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | output         | can make sounds           | mouth   |            |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      |                | can create change in your | hands   | arms       | muscles of facial expression | legs |
+      |                | environment               |         |            |                              |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      | Host           | brain, organ, muscles     | bones   | blood      | hormones                     |      |
+      |----------------+---------------------------+---------+------------+------------------------------+------|
+      - “Look, there is a human being who is using his interface to interact with the interface of a computer.”
+
+      - “I see what you mean. Isn’t it interesting how the human’s terminal interacts with the computer’s terminal?”
+*** 2. Host and Terminal
+*** 3.In The Old Golden Days, Computers Were Expensive
+*** 4.Host and Terminals
+*** 5.Terminal Room and Terminal Service
+*** 6.The Console
+*** 7.The Unix Connection
+*** 8.Host Without Connection
+    - Headless System
+      - web server
+      - router > relay data from one network to another.
+*** 9.The Client/Server Relatinship
+    - Client/Server Model
+*** 10.What happened when you pressed a key?
+*** 11.Character Terminals and Graphics Terminals
+    - Most of the time, text is all you need.
+
+** 04.Starting to Use Unix
+   Work Session
+*** 1.The System Administrator
+*** 2.Userids and Passwords
+*** 3.Logging In(Starting Work With Unix)
+*** 4.What happens after you log in?
+*** 5.Getting Down to Work: The Shell Prompt
+*** 5.Getting Down to Work: The Shell Prompt
+*** 6.Logging Out(Stopping Work with Unix): logout, exit, login
+*** 7.Upper and Lowercase
+*** 8.A Sample Session With Unix
+*** 9.Changing Your Password: passwd
+*** 10.Choose a passwordr unix account:last
+*** 11.Check if someone has been using your unix account: last
+*** 12.Userids and Users
+*** 13.The Superuser Userid: root
+*** 14.Having Fun While Practicing Safe Computing
+
+** 05.GUIs: Graphical User Interfaces
+   GUI, window, picture, icon(small picture), scroll bar, pointer)
+   Project Athena
+*** 1.What is GUI
+*** 2.X Window
+    Project Athena
+*** 3.Who is in Charge of X Window
+*** 4.Layers of Abstractionz
+*** 5.The Window Manager
+*** 6.The Desktop Environment
+    When we use tools that are designed primarily to be easy to learn, we end up with systems in which the computer is in control. When we use well-designed, powerful tools that take time to learn, we end up with systems in which the user is in control. That is the case with Unix.
+*** 7.Layer fo Abstraction: Revisited
+    | Application Pragrams /User  |               |
+    |-----------------------------+---------------|
+    | Desktop Environment         | Drag and Drop |
+    |-----------------------------+---------------|
+    | Window Manager              |               |
+    |-----------------------------+---------------|
+    | X Window                    |               |
+    |-----------------------------+---------------|
+    | Device Drives In The Kernel |               |
+    |-----------------------------+---------------|
+    | Hardware                    |               |
+    |-----------------------------+---------------|
+    Philosophically, we can think of the entire system as a means of bridging the gap between human hardware and computing hardware. Smart
+*** 8.How The Unix Companies Blew It?
+*** 9.KDE and Gnome
+*** 10.CDE and Total Cost of Ownship
+*** 11.Choosing a Desktop Envioronment
+    Total Cost of Ownership
+*** 12.The Grandmother Machine
+
+** 06.The Unix Work Environment
+   Although the Unix interfaces were based on hardware, they were created with more in mind than their appearance and basic function. They were designed to provide a complex working environment that is particularly well-suited to the human mind.
+*** 1.Doing More Than One Thing At A Time: Part I
+*** 2.The GUI And CLI
+*** 3.Logging in And Lgging Out with a GUI
+*** 4.Runlevels
+*** 5.Learning to Use a GUI
+*** What happened when the system starts or stops? dmesg
+u** 07.Using The Keyboard with Unix
+*** infocmp, echo $TERM
+** 08.Program to Use Right Away
+   - which, type, whence
+s** 09.Documentation: The Unix Manual and Info
+** 10.Command Syntax
+** 11.The Shell
+** 12.Using the Shell: Variable and Options
+** 13.Using the shel: Commands and Customzation
+** 14.Using the Shell: Initalization Files
+** 15.Standard I/O, Redirection and Pipes
+** 16.Filters: Introduction to Basic Operations
+** 17.Filters:Comparing and Extracting
+** 18.Filters:Counting and Formatting
+   nl, wc, expand, unexpand
+** 19.Filters:Selecting, Sorting, Combining
+   sort, uniq, sed,
+** 20.Regular Expression
+** 21.Display Files
+   With all the time we spend using computers, it is important to remind ourselves that the main product of our effort is almost always some type of output: text, numbers, graphics, sound, photos, video, or some other data.
+
+** 23.The Unix Filesystem
+*** 总结几点重要的收获:
+    从file的定义出发.
+    1. /proc/1111 is the process id
+    2. mount /dev on /media
+    3. Named
+ Piples: mkfifo, IPC (Interproces Communication)
+    4. Boot Process, boot devices filesystem
+    5. The Virtual File System
+**** What is A File?
+**** Types of Files
+     - Ordinary Files
+     - Directory
+     - Pseudo File
+       - Special File (Device File)
+         - Character
+         - Block
+         - Network
+       - Named Pipe
+         - mkfifo [-m mode] pipe (Interprocess Communication or IPC)
+       - Proc File >
+           proc/1952 is information about the process#1952
+**** Directoies and Subdirectories
+**** Special Files
+     - Hardware (a,b,c)
+       - /dev/hda > hard disk
+       - /dev/sda > SCSI hard disk
+       - /dev/lpo > printer
+       - /dev/usb
+     - Terminals
+       - /dev/tty > represent the current terminal
+       - /dev/pts
+     - Pseudo Devices
+       - /dev/null
+         - dd if=/dev/null of=temp bs=100 count=1
+       - /dev/zero
+       - /dev/random > Natural process
+       - /dev/urandom
+**** Mounting A Filesystem: mount, umount
+     - mount /dev/fd0  /media/floppy
+     - /mnt for the Fixed Media, while /media for the removable media
+     -
+**** Essential Programs
+     - General_Use Programs
+       - bin
+       - /usr/bin
+       - /usr/local/bin
+     - System Administration Programs
+       - /sbin
+       - /usr/sbin
+       - /usr/local/sbin
+     - Third-Party Applications
+       - /opt/***       > Static data for application ***, including programs
+       - /var/opt/***   > variable data for application ***
+** 24.Working With Directories
+*** Summary:
+    - dirs stack operations是最大的收获.
+*** Using The Directory Stack: pushd, popd, dirs
+
+    | Using Stack |           |    |    |
+    |-------------+-----------+----+----|
+    | dirs        | -v        | -l | -c |
+    |-------------+-----------+----+----|
+    | pushd       | directory | +n |    |
+    |-------------+-----------+----+----|
+    | popd        |           | +n |    |
+    |-------------+-----------+----+----|
+*** Collating Sequences, Locales and ls
+*** Keeping Track of Your Disk Space Usage:
+    | Commands | Options |     |    |    |    |            |
+    |----------+---------+-----+----+----+----+------------|
+    | ls       | -F      | -hs | -t | -R | -r | -i (inode) |
+    |----------+---------+-----+----+----+----+------------|
+    | du       | -s      |     |    |    |    |            |
+    |----------+---------+-----+----+----+----+------------|
+    | df       |         |     |    |    |    |            |
+    |----------+---------+-----+----+----+----+------------|
+    | quota    |         |     |    |    |    |            |
+    |----------+---------+-----+----+----+----+------------|
+*** How big is a File? Blocks and alloctions Units: dumpe2fs
+    - dumpe2fs
+    - dumpfs
+*** Globbing with wildcards
+    - *
+    - ? z
+    - [list]
+    - [^list}
+    - {string1 | string2}
+    - class lower, upper, digit, alnum, alpha
+*** Displaying a directory Tree:
+    - tree -df -L 2
+
+** 25.Working With Files
+
+   | Commands | Options     |              |    |
+   |----------+-------------+--------------+----|
+   | cp       | p           |              |    |
+   |          | preserve    |              |    |
+   |----------+-------------+--------------+----|
+   | setuid   |             |              |    |
+   |----------+-------------+--------------+----|
+   | id       |             |              |    |
+   |----------+-------------+--------------+----|
+   | groups   |             |              |    |
+   |----------+-------------+--------------+----|
+   | umask    |             |              |    |
+   |----------+-------------+--------------+----|
+   | shred    | -v          | -z (zero)    | -f |
+   |----------+-------------+--------------+----|
+   | ln       | file        | newname      |    |
+   |----------+-------------+--------------+----|
+   | ln -s    | file        | newname      |    |
+   |----------+-------------+--------------+----|
+   | cd       | -L(logical) | -P(physical) |    |
+
+
+*** Wiping out the Contents of a File: shred
+    shred -fuvz datafile
+    - Here then is the ultimate shred command. It will override
+      existing ﬁle permissions, wipe out all the data by overwriting
+      it many times, ﬁll the ﬁle with all zeros, and delete the
+      remains:
+*** The idear of link
+    1. Unix set aside storage space on the disk to hold the file
+    2. Unix look in the inode table and find a free inode, say#478515.
+       fill in the information in the inode that pertains to the new file.
+    3.Unix place an entry in the _bin_ directory.
+      Entry contains the filename along with inumber of 478515
+      Link connects a filename and the file itself.
+| find    |            | action...            |                                                        |
+|---------+------------+----------------------+--------------------------------------------------------|
+| Path... | Filter...  | FILENAMES:           | -name, iname  "*.c" wildcards in parenthesis           |
+|---------+------------+----------------------+--------------------------------------------------------|
+|         |            | FILE CHARACTERS      | -type, -perm, -user, -group, -size[-+]n[cbkMG], -empty |
+|---------+------------+----------------------+--------------------------------------------------------|
+|         |            | ACCESS, MODIFICATION | -amin [-+]n, -anewer file, -atime                      |
+|         |            |                      | -cmin [-+]n, -cnewer file, -ctime                      |
+|         |            |                      | -mmin [-+]n, -newer file,  -mtime                      |
+|---------+------------+----------------------+--------------------------------------------------------|
+|         | Actions... | -print, -fprint, -ls | -fls file, -delete, -exec {} \; -ok {} \;              |
+|---------+------------+----------------------+--------------------------------------------------------|
+|         |            |                      |                                                        |
+    - find ~ -type f -mtime +365 | xargs grep "Harley Hahn"
+      - find /var/tmp -mtime +2 -a -mtime -8 -ls
+    - find . -type f | xargs -i mv {} ~/backups/{}.old
+    - find ~ -type f -print0 | xargs -0 --no-run-if-empty wc -w
+      Within Unix, every object is represented by either a ﬁle or a process. In simple terms, a ﬁle is an input source or output target, while a process is a program that is executing. Files offer access to data; processes make things happen.
+*** 1.How The Kernel Manages Processes
+    | File    | inumber | inode table   |
+    |---------+---------+---------------|
+    | Process | PID     | Process Table |
+    A typical time slice consists of about 10 milliseconds (10 thousandths of a second) of CPU time.
+*** 2.Forking Till You Die
+    Kernel provides essential services to PROCESSES
+    Kernel做的事情, 汇总.
+
+    | 1 | Memory management           | Virtual memory management, including paging                                              |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 2 | Process Management          | process creation, termination, scheduling                                                |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 3 | Interprocess communication  | local, network                                                                           |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 4 | Input/output                | via device driver, programs that perform the actual communications with physical devices |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 5 | File Management             |                                                                                          |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 6 | Security and access control |                                                                                          |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+    | 7 | Network Access              | such as TCP/IP                                                                           |
+    |---+-----------------------------+------------------------------------------------------------------------------------------|
+
+    | System Call | Purpose                                           |       |                                    |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+    | Fork        | Create a copy to the Current Process              | Open  | Open a file for reading or writing |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+    | Wait        | Wait for another process to finish execuing       | Read  | Read data from a file              |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+    | Exec        | Execute a new program whithin the current process | Write |                                    |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+    | Exit        | Terminate the current process                     | Close |                                    |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+    | Kill        | Send a signal to another process                  |       |                                    |
+    |-------------+---------------------------------------------------+-------+------------------------------------|
+*** 3. Orphans and Abondoned Processes
+    Orphan > init adopt
+    zombie > kill parent > adopt by init
+x
+*** 4.Dsitinguish Betwee Parent and Child
+    - Fork results in two identical processes.
+      - Parent get a returned value of the newly created child
+      - Child get a returned value which is set to 0.
+
+*** 5.The Very First Process
+    - Process #0 and Process#1 > init
+
+*** 6.Foreground and Background Process
+    - sort < bigfile > results
+*** 7.Creating a Delay: Sleep
+    Job Controls
+    | Job Control Commands | Description                        |
+    |----------------------+------------------------------------|
+    | jobs                 |    -l,                             |
+    |----------------------+------------------------------------|
+    | ps                   |                                    |
+    |----------------------+------------------------------------|
+    | fg                   |%%, %+, %-, %n, %name, %?name       |
+    |----------------------+------------------------------------|
+    | bg                   |                                    |
+    |----------------------+------------------------------------|
+    | suspend              | suspend the current shell          |
+    |----------------------+------------------------------------|
+    | ^Z                   | suspend the current foreground job |
+    |----------------------+------------------------------------|
+    | kill                 |                                    |
+** 26.Process and Job Control
+*** Summary
+    - Process Treez
+    - Job Control
+*** 1.How The Kernel Manages Processes
+*** 2.Forking Till you Die
+    Kernel Porvide essential services to processes:
+    - Memory Management
+    - Process Management
+    - Interprocess Communication(Local, network)
+    - Input/Output(via device driver, program that perform actual communications with physcial devices
+    - File Management
+    - Security and access Control
+    - Network Access(such TCP/IP)
+
+    System Call
+    - fork, wait, exec, kill
+    - open, read, write, close
+*** 3.Orphans and Abandoned Processes
+
+*** 4.Distinguish Between Parent and Child
+    - Parent get a RETURN VALUE of newly child process ID
+    - child get a RETURNED VALUE of zero.
+
+*** 5.The Very First Process: init
+
+*** 6.Foreground and Background Processes
+*** 7.Creating A Delay: sleep
+    sleep 5; sleep 5s; sleep 5m; sleep 5h; sleep 5d
+*** 8.Job Control,
+    jobs, ps, fg, bg, suspend,
+    - %%, current job
+    - %+, current job
+    - %-, previous job
+    - %n, job#n
+    - %name, job with specified command name
+    - %?name, job with name anywhere within the command
+*** 9.The ps Program: Basic Skills (Process Status)
+    Options can be divided into three groups:
+    - Unix
+    - BSD
+    - GNU-only
+    Compare ls and ps
+    - ls examine the inode table;
+    - ps examine the process table 
+
+     |---------+------+-------------------------------------------------------------|
+     | Command |      | * Which Processes Are Displayed                             |
+     |---------+------+-------------------------------------------------------------|
+     | ps      |      | -a, -e(include daemons), -p, -u                             |
+     |---------+------+-------------------------------------------------------------|
+     |         |      | * Which Data Columns Are Displayed                          |
+     |---------+------+-------------------------------------------------------------|
+     | -f      |      | UID, PID, PPID, C, TTY, TIME, CMD                           |
+     |---------+------+-------------------------------------------------------------|
+     | -F      |      | UID, PID, PPID, C, SZ, RSS, STIME, TTY, TIME, CMD           |
+     |---------+------+-------------------------------------------------------------|
+     | -l      | F, S | UID, PID, PPID, C, PRI, NI, ADDR, SZ, WCHAN, TTY, TIME, CMD |
+     |---------+------+-------------------------------------------------------------|
+     | -ly     | S    | UID, PID, PPID, C, PRI, NI, RSS, SZ, WCHAN, TTY, TIME, CMD  |
+     |---------+------+-------------------------------------------------------------|
+*** 9.The ps Program: Choosing Options
+
+*** 10.The ps Program: States
+    - Status Code:
+      1. R,
+      2. T, suspended
+      3. I, Idle: Sleeping for longer than 20 seconds
+      4. D, Uninterruptiable sleep,
+      5. Z, Zombie: terminated, parent not waiting
+*** 11.Displaying A Process Tree: pstree, ptree
+    pstree -np
+    pstree -p $$
+*** 12.Think About How Unix Organize Processes and Files: fuser
+    fuser
+    | Similarities      | File | Process   |
+    |-------------------+------+-----------|
+    | Hierarchical Tree | root | process#1 |
+    |-------------------+------+-----------|
+    |                   |      |           |
+*** 13.Killing A Process: kill
+*** Setting The Priority For A Process: nice
+    (In other words, being nice always pays off.)
+*** 14.Changing The Priority of An Existing Process: Renice
+    renice
